@@ -13,7 +13,7 @@ async function getTime(dateString) {
     let currentTime = moment().unix();
     let timeUntilNextBus = parseInt((timeStamp - currentTime) / 60);
     return timeUntilNextBus;
-
+    
 }
 
 // Find the routeId for route from args

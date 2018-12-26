@@ -8,7 +8,7 @@ import getDirections from '../services/direction';
 import getStops from '../services/stop';
 import busTime from '../services/busTime'
 
-class RoutesInput extends Component {
+class Input extends Component {
 
     constructor() {
         super();
@@ -25,21 +25,19 @@ class RoutesInput extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    // Get routes when component mounts
     async componentDidMount() {
         this.routes = await getRoutes();
-        console.log(this.state.route);
     }
 
-    async getDirectionsFromState(route) {
-        console.log('This is route before await: ', route);
+    // get directions after route is selected
+    async getDirectionsFromDropdownSelect(route) {
+
         this.directions = await getDirections(route);
         this.setState({direction: this.directions});
-        console.log("This is route inside getDirectionformState: ", route);
-        console.log('This is directions: ', this.directions);
-        console.log('This is value: ', this.state.route);
-        console.log('This is state!!!!!!!!', this.state);
     }
     
+
     filterRoutes(event) {
         setTimeout(() => {
             let results;
@@ -56,14 +54,13 @@ class RoutesInput extends Component {
         }, 250);
     }
 
+    // get stops when direction change
     async onDirectionChange(e) {
-        console.log('This is e.value direction: ', e.value);
+
         this.setState({direction: e.value});
         if(e.value) {
             this.stops = await getStops(this.state.route, e.value.Text);
         }
-        
-        console.log("This is stops!!!!!!!: ", this.stops);
 
     }
 
@@ -83,32 +80,30 @@ class RoutesInput extends Component {
         }, 250);
     }
 
+    // get next bus time when button is clicked
     async handleClick() {
-        console.log('This is state: ', this.state);
+
         this.nextBus = await busTime(this.state.route, this.state.direction.Text, this.state.stop);
-        console.log("This is time till bus: ", this.nextBus);
         this.setState({ nextBus: this.nextBus });
     }
     
   render() {
     return (
       <div style={{paddingLeft: '10px', paddingTop: '10px'}}>
-          <div>
-        <h3>Choose a Route</h3>    
-        <AutoComplete value={this.state.route} suggestions={this.state.filteredRoutes} completeMethod={this.filterRoutes}
-         size={50} placeholder="Routes" dropdown={true} minLength={1} onChange={(e) => this.setState({route: e.value})}
-         onSelect={(e) => this.getDirectionsFromState(e.value)}/>
+        <div>
+          <h3>Choose a Route</h3>    
+          <AutoComplete value={this.state.route} suggestions={this.state.filteredRoutes} completeMethod={this.filterRoutes}
+          size={50} placeholder="Routes" dropdown={true} minLength={1} onChange={(e) => this.setState({route: e.value})}
+          onSelect={(e) => this.getDirectionsFromDropdownSelect(e.value)}/>
         </div>
         <div>
         {(this.directions && this.directions.length !== 0) && 
             <div style={{justifyContent: 'center', alignItems: 'center'}}>
             <h3>Choose a Direction</h3>    
-            <ListBox value={this.state.direction} options={this.directions} onChange={this.onDirectionChange} 
+            <ListBox value={this.state.direction} options={this.directions} onChange={this.onDirectionChange}
             optionLabel="Text" style={{justifyContent: 'center'}}/>
             </div>
         }
-        </div>
-        <div>
         </div>
         {(this.stops && this.stops.length !== 0) &&
            <div>
@@ -122,10 +117,10 @@ class RoutesInput extends Component {
         </div>
 
         { this.nextBus ? <h4>{this.nextBus}</h4> : null }
-
+        
       </div>
     )
   }
 }
 
-export default RoutesInput
+export default Input

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
 import Header from './components/Header';
-import RoutesInput from './components/RoutesInput';
+import RoutesInput from './components/Input';
 class App extends Component {
   render() {
     return (
@@ -16,9 +15,6 @@ class App extends Component {
         </div>
         <div className="App">
          <RoutesInput/>
-          <header className="App-header">
-           <img src={logo} className="App-logo" alt="logo" />
-          </header>
         </div>
       </div>
     )

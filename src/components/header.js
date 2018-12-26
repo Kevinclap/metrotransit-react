@@ -10,9 +10,8 @@ const Header = () => {
         <Navbar.Brand>
           <a href="http://svc.metrotransit.org/" target="_blank" rel="noopener noreferrer">Metro Transit</a>
         </Navbar.Brand>
-      <Navbar.Toggle />
-     </Navbar.Header>
-  </Navbar>
+      </Navbar.Header>
+     </Navbar>
     </div>
   )
 }

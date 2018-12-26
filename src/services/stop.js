@@ -3,17 +3,13 @@ import getData from './data';
 
 export default async function getStops(route, direction) {
 
-console.log('This is route from getStop: ', route);
-console.log('This is direction from getStop', direction);
-
 let routesUrl = 'https://svc.metrotransit.org/NexTrip/Routes?format=json';
+// get routeId to request stops
 let routeId = await getData(routesUrl, 'Description', 'Route', route);
-console.log('This is routeId in direction: ', routeId);
 
 let directionsUrl = 'https://svc.metrotransit.org/NexTrip/Directions/' + routeId + '?format=json';
+// get directionId to request stops
 let directionId = await getData(directionsUrl, 'Text', 'Value', direction);
-
-console.log('url from stops: ', directionsUrl, routeId, directionId);
 
 let stopsUrl = 'https://svc.metrotransit.org/NexTrip/Stops/' + routeId + '/' + directionId + '?format=json';
 
@@ -25,7 +21,7 @@ try {
     data.forEach((item) => {
         stops.push(item.Text);
     })
-    console.log("This is Stops inside direction.js: ", stops);
+    
     return stops;
 
   } catch (error) {
