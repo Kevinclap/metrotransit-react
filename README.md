@@ -1,5 +1,7 @@
 This project is based on the [metro-transit-cli](https://github.com/Kevinclap/metro-transit-CLI). It has the same functionality with UI.
 
+[Live version](https://kevinclap.github.io/metrotransit-react/)
+
 ## Available Scripts
 
 In the project directory, you can run:
