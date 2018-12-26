@@ -5,11 +5,11 @@ export default async function getDirections(route) {
 
     console.log('This is route from getDirection: ', route);
 
-let routesUrl = 'http://svc.metrotransit.org/NexTrip/Routes?format=json';
+let routesUrl = 'https://svc.metrotransit.org/NexTrip/Routes?format=json';
 let routeId = await getData(routesUrl, 'Description', 'Route', route);
 console.log('This is routeId in direction: ', routeId);
 
-let directionsUrl = 'http://svc.metrotransit.org/NexTrip/Directions/' + routeId + '?format=json';
+let directionsUrl = 'https://svc.metrotransit.org/NexTrip/Directions/' + routeId + '?format=json';
 
 console.log('url from directions: ', directionsUrl);
 

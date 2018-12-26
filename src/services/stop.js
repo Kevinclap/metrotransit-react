@@ -6,16 +6,16 @@ export default async function getStops(route, direction) {
 console.log('This is route from getStop: ', route);
 console.log('This is direction from getStop', direction);
 
-let routesUrl = 'http://svc.metrotransit.org/NexTrip/Routes?format=json';
+let routesUrl = 'https://svc.metrotransit.org/NexTrip/Routes?format=json';
 let routeId = await getData(routesUrl, 'Description', 'Route', route);
 console.log('This is routeId in direction: ', routeId);
 
-let directionsUrl = 'http://svc.metrotransit.org/NexTrip/Directions/' + routeId + '?format=json';
+let directionsUrl = 'https://svc.metrotransit.org/NexTrip/Directions/' + routeId + '?format=json';
 let directionId = await getData(directionsUrl, 'Text', 'Value', direction);
 
-console.log('url from stops: ', directionsUrl);
+console.log('url from stops: ', directionsUrl, routeId, directionId);
 
-let stopsUrl = 'http://svc.metrotransit.org/NexTrip/Stops/' + routeId + '/' + directionId + '?format=json';
+let stopsUrl = 'https://svc.metrotransit.org/NexTrip/Stops/' + routeId + '/' + directionId + '?format=json';
 
 try {
     const response = await axios.get(stopsUrl);

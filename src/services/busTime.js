@@ -3,7 +3,7 @@ import getData from './data';
 
 export default async function getNextBus(route, direction, stop) {
 
-let url = 'http://svc.metrotransit.org/NexTrip/'
+let url = 'https://svc.metrotransit.org/NexTrip/'
 
 // Calculate time until next bus arrival
 async function getTime(dateString) {
@@ -56,8 +56,8 @@ if(!time) {
 let timeUntilNextBus = await getTime(time);
 
 if (timeUntilNextBus > 1) { 
-    console.log('Next bus arriving in ', timeUntilNextBus, 'minutes!');
-    return 'Next bus arriving in ' + timeUntilNextBus + 'minutes!';
+    console.log('Next bus arriving in ', timeUntilNextBus, ' minutes!');
+    return 'Next bus arriving in ' + timeUntilNextBus + ' minutes!';
 } else {
     console.log('Next bus arriving in 1 minute or less');
     return 'Next bus arriving in 1 minute or less';

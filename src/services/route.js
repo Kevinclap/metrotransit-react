@@ -3,7 +3,7 @@ import axios from 'axios';
 export default async function getRoutes() {
 
 // Find the routeId for route from args
-let url = 'http://svc.metrotransit.org/NexTrip/Routes?format=json';
+let url = 'https://svc.metrotransit.org/NexTrip/Routes?format=json';
 try {
     const response = await axios.get(url);
     let data = response.data;
