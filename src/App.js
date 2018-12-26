@@ -10,12 +10,16 @@ import RoutesInput from './components/RoutesInput';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-      <Header/>
-      <RoutesInput/>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
+      <div>
+        <div className="Header">
+         <Header/>
+        </div>
+        <div className="App">
+         <RoutesInput/>
+          <header className="App-header">
+           <img src={logo} className="App-logo" alt="logo" />
+          </header>
+        </div>
       </div>
     )
   }
