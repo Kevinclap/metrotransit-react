@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/metrotransit-react/precache-manifest.00a7a8287361f95d41be222eeb316420.js"
+  "/metrotransit-react/precache-manifest.b5e507d31683c285593a816bf4281634.js"
 );
 
 workbox.clientsClaim();
