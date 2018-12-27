@@ -5,7 +5,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
 import Header from './components/Header';
-import RoutesInput from './components/Input';
+import Input from './components/Input';
 class App extends Component {
   render() {
     return (
@@ -14,7 +14,7 @@ class App extends Component {
          <Header/>
         </div>
         <div className="App">
-         <RoutesInput/>
+         <Input/>
         </div>
       </div>
     )
